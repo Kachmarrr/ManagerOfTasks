@@ -15,11 +15,5 @@ public class Main {
 
         Task task3 = new Task("products", "buy Coca cola", 2);
         manager.addTask(task3);
-
-
-
-
-
-
     }
 }

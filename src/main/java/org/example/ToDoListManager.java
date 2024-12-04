@@ -11,7 +11,8 @@ import java.util.function.Predicate;
 public class ToDoListManager {
 
     private List<Task> tasks = new ArrayList<>(); //чому ми використовуємо list, а не arrayList ? // зрозумів що потрібно було ініціалізувати
-    private Map<String, List<Task>> tasksByCategory = new HashMap<>(); /// Зрозумів для чого взагалі тут hashMap: String - це назва категорії(ключ), List<Task> - це спикок до відповідної категорії
+    private Map<String, List<Task>> tasksByCategory = new HashMap<>();
+    /// Зрозумів для чого взагалі тут hashMap: String - це назва категорії(ключ), List<Task> - це спикок до відповідної категорії
 
     private int currentId = 1;
 
@@ -62,7 +63,6 @@ public class ToDoListManager {
     }
 
     // приймає список та значення по якому буде відбуватися фільтр
-
     public void filterTasks(Predicate<Task> filter) {
 
     }

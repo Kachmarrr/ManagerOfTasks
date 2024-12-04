@@ -11,17 +11,16 @@ public class ToDoListManager {
 
     private List<Task> tasks = new ArrayList<>(); //чому ми використовуємо list а не arrayList ? // зрозумів що потрібно було ініціалізувати
 
-    ///зрозумів для чого взагалі тут hashMap: String - це назва категорії(ключ), List<Task> - це спикок до відповідної категорії
+    /// зрозумів для чого взагалі тут hashMap: String - це назва категорії(ключ), List<Task> - це спикок до відповідної категорії
     private Map<String, List<Task>> tasksByCategory = new HashMap<>();
 
     private int currentId = 1;
 
     // не зрозумів звідки я взяв Task
     public void addTask(Task task) {
-        //computeIfAbsent
 
         task.setId(currentId++);
-
+        //computeIfAbsent
         if (!tasksByCategory.containsKey(task.getCategory())) {
             tasksByCategory.put(task.getCategory(), new ArrayList<>());
         } else {
@@ -33,24 +32,26 @@ public class ToDoListManager {
     public void editTask(int id, Task updatedTask) {
         for (Task task : tasks) {
             if (task.getId() == id) {
+
                 task.setCategory(updatedTask.getCategory());
+                task.setDescription(updatedTask.getDescription());
+                task.setPriority(updatedTask.getPriority());
+                task.setCompleted(updatedTask.isCompleted());
+                break;
+            } else {
+                System.out.println("id is not found (");
             }
-            else {
-                task.setCategory(updatedTask.getCategory());
-            }
-            System.out.println(task.getCategory());
         }
-        System.out.println(updatedTask.getCategory());
-        System.out.println(tasksByCategory.get(updatedTask.getCategory()));
     }
 
     public void removeTask(int id) {
         for (Task task : tasks) {
             if (task.getId() == id) {
-                tasksByCategory.get(task.getCategory()).remove(task);
-            }
-            else {
-                System.out.println(task.getCategory());
+                tasks.remove(task);
+            } else {
+                System.out.println("id of task is not find.");
+                //чому ми break пишсемо тут в else
+                break;
             }
         }
     }

@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 //import lombok.AllArgsConstructor;
 
 //@AllArgsConstructor
 public class ToDoListManager {
 
-    private List<Task> tasks = new ArrayList<>(); //чому ми використовуємо list, а не arrayList ? // зрозумів що потрібно було ініціалізувати
+    private List<Task> tasks = new ArrayList<>(); //чому ми використовуємо list а не arrayList ? // зрозумів що потрібно було ініціалізувати
+
+    /// зрозумів для чого взагалі тут hashMap: String - це назва категорії(ключ), List<Task> - це спикок до відповідної категорії
     private Map<String, List<Task>> tasksByCategory = new HashMap<>();
-    /// Зрозумів для чого взагалі тут hashMap: String - це назва категорії(ключ), List<Task> - це спикок до відповідної категорії
 
     private int currentId = 1;
 
@@ -45,13 +44,13 @@ public class ToDoListManager {
         }
     }
 
-    public void deleteTask(int id) {
+    public void removeTask(int id) {
         for (Task task : tasks) {
             if (task.getId() == id) {
                 tasks.remove(task);
             } else {
                 System.out.println("id of task is not find.");
-                //чому ми break пишемо тут в else
+                //чому ми break пишсемо тут в else
                 break;
             }
         }
@@ -61,12 +60,5 @@ public class ToDoListManager {
         for (Task task : tasks) {
             System.out.println(task);
         }
-    }
-
-    // приймає список та значення по якому буде відбуватися фільтр
-    public void filterTasks(Predicate<Task> filter) {
-        List<Task> highPriorityTasks = tasks.stream()
-                .filter(task -> "High".equals(task.getPriority()) && !task.isCompleted())
-                .collect(Collectors.toList());
     }
 }

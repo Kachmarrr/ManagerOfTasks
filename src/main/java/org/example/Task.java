@@ -24,4 +24,3 @@ public class Task {
         return "\nTask-> \nid: " + id + "\npriority: " + priority + "\ncategory: " + category  + "\ndescription:  " + description + "\nstatus:  " + isCompleted;
     }
 }
-

@@ -17,5 +17,14 @@ public class Main {
         manager.addTask(task3);
 
         manager.listTasks();
+
+        manager.filterTasks(task -> task.getCategory().equals("products"));
+        manager.filterTasks(task -> task.getCategory().equals(""));
+
+        manager.listTasks();
+
+
     }
+
+
 }

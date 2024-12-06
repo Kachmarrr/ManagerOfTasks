@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 //import lombok.AllArgsConstructor;
 
 //@AllArgsConstructor
@@ -60,5 +62,13 @@ public class ToDoListManager {
         for (Task task : tasks) {
             System.out.println(task);
         }
+    }
+
+    public void filterTasks(Predicate<Task> condition) {
+        List<Task> filtered = tasks.stream()
+                .filter(condition)
+                .collect(Collectors.toList());
+
+        tasks = filtered;
     }
 }

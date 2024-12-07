@@ -18,6 +18,17 @@ public class ToDoListManager {
 
     private int currentId = 1;
 
+
+    public void printMenu() {
+        System.out.println("menu: ");
+        System.out.println("1. Add Task");
+        System.out.println("2. View Tasks");
+        System.out.println("3. Edit Task");
+        System.out.println("4. Delete Task");
+        System.out.println("5. Filter Tasks");
+        System.out.println("6. Statistics Tasks");
+    }
+
     // не зрозумів звідки я взяв Task
     public void addTask(Task task) {
 

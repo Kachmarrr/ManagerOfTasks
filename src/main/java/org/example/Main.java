@@ -1,4 +1,5 @@
 package org.example;// запитати що це
+import javax.swing.*;
 import java.util.Scanner;
 
 public class Main {
@@ -38,10 +39,47 @@ public class Main {
                     manager.addTask(new Task(category, description, priority));
                 }
                 case 2 -> {
-                    System.out.println();
+                    manager.printMenuList();
+                    System.out.println("Please enter your choice: ");
+                    Integer choiceList = scanner.nextInt();
+                    scanner.nextLine();
 
-
+                    switch (choiceList) {
+                        case 1 -> {
+                            System.out.println("Please enter the category of the task: ");
+                            String category = scanner.nextLine();
+                            manager.filterTasks(task -> task.getCategory().equals(category));
+                        }
+                        case 2 -> {
+                            System.out.println("Please enter the prioryty of the task:\n(1 - High, 2 - Medium, 3 - Low): ");
+                            Integer priority = scanner.nextInt();
+                            manager.filterTasks(task -> task.getPriority() == priority);
+                        }
+                        case 3 -> {
+                            manager.listTasks();
+                        }
+                    }
                 }
+                case 3 -> {
+                    scanner.nextLine();
+                    System.out.println("Please enter the id of the task: ");
+                    Integer id = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Please enter the category of the task: ");
+                    String category = scanner.nextLine();
+                    System.out.println("Please enter the description of the task: ");
+                    String description = scanner.nextLine();
+                    System.out.println("Please enter the priority of the task\n(1 - High, 2 - Medium, 3 - Low): ");
+                    Integer priority = scanner.nextInt();
+                    manager.editTask(id, new Task(category, description, priority));
+                }
+                case 4 -> {
+                    System.out.println("Please enter the id of the task: ");
+                    Integer id = scanner.nextInt();
+                    manager.removeTask(id);
+                }
+
+
 
 
             }

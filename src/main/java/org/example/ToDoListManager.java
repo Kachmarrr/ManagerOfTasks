@@ -29,6 +29,13 @@ public class ToDoListManager {
         System.out.println("6. Statistics Tasks");
     }
 
+    public void printMenuList() {
+        System.out.println("menu: ");
+        System.out.println("1. sort tasks by category");
+        System.out.println("2. sort tasks by priority");
+        System.out.println("3. show all tasks");
+    }
+
     // не зрозумів звідки я взяв Task
     public void addTask(Task task) {
 
@@ -45,7 +52,6 @@ public class ToDoListManager {
     public void editTask(int id, Task updatedTask) {
         for (Task task : tasks) {
             if (task.getId() == id) {
-
                 task.setCategory(updatedTask.getCategory());
                 task.setDescription(updatedTask.getDescription());
                 task.setPriority(updatedTask.getPriority());
@@ -56,11 +62,14 @@ public class ToDoListManager {
             }
         }
     }
-
+    // не розумію чому не працює метод, воно в прінті видає "id of task is not find."
+    // хоча вони вручну додані завдання і ці id мусять бути додані, пробував змінювати типи даних з int на Integer,
+    // все одно не працює, запитати чим відрізняється int та Integer.
     public void removeTask(int id) {
         for (Task task : tasks) {
             if (task.getId() == id) {
                 tasks.remove(task);
+                System.out.println("task is removed");
             } else {
                 System.out.println("id of task is not find.");
                 //чому ми break пишсемо тут в else

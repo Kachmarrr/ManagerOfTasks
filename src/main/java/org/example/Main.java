@@ -29,7 +29,7 @@ public class Main {
             scanner.nextLine();
 
             switch (choice) {
-                case 1 -> {
+                case 1 -> { // rev
                     System.out.println("Please enter the category of the task: ");
                     String category = scanner.nextLine();
                     System.out.println("Please enter the description of the task: ");
@@ -38,7 +38,7 @@ public class Main {
                     Integer priority = scanner.nextInt();
                     manager.addTask(new Task(category, description, priority));
                 }
-                case 2 -> {
+                case 2 -> { //rev
                     manager.printMenuList();
                     System.out.println("Please enter your choice: ");
                     Integer choiceList = scanner.nextInt();
@@ -46,12 +46,12 @@ public class Main {
 
                     switch (choiceList) {
                         case 1 -> {
-                            System.out.println("Please enter the category of the task: ");
+                            System.out.println("Please enter the category of the tasks: ");
                             String category = scanner.nextLine();
                             manager.filterTasks(task -> task.getCategory().equals(category));
                         }
                         case 2 -> {
-                            System.out.println("Please enter the prioryty of the task:\n(1 - High, 2 - Medium, 3 - Low): ");
+                            System.out.println("Please enter the prioryty of the tasks:\n(1 - High, 2 - Medium, 3 - Low): ");
                             Integer priority = scanner.nextInt();
                             manager.filterTasks(task -> task.getPriority() == priority);
                         }
@@ -60,7 +60,7 @@ public class Main {
                         }
                     }
                 }
-                case 3 -> {
+                case 3 -> { // метод дуже дивно працює він міняє і працює коректно, але видає "id of task is not find."
                     scanner.nextLine();
                     System.out.println("Please enter the id of the task: ");
                     Integer id = scanner.nextInt();
@@ -73,18 +73,32 @@ public class Main {
                     Integer priority = scanner.nextInt();
                     manager.editTask(id, new Task(category, description, priority));
                 }
-                case 4 -> {
+                case 4 -> { // тут взагалі трабл
                     System.out.println("Please enter the id of the task: ");
                     Integer id = scanner.nextInt();
                     manager.removeTask(id);
                 }
 
+                case 5 -> { //rev
+                    System.out.println("this program filter task by your standards. ");
+                    System.out.println("Enter the category of the tasks: ");
+                    String category = scanner.nextLine();
+                    System.out.println("Please enter the priority of the tasks: ");
+                    Integer priority = scanner.nextInt();
+                    // тут в мене виникла проблема я не міг зрозуміти чому в мене фільтри робляться окремо,
+                    // цю проблему можна було вирішити по різному, але я вибрав && - запитати щоб розказали за це;
+                    manager.filterTasks(task -> task.getCategory().equals(category) && task.getPriority() == priority);
+                }
+
+                case 6 -> {
+                    System.out.println("Please enter the id of the tasks: ");
+                    Integer id = scanner.nextInt();
+                    manager.taskIsCompleted(id);
+                }
 
 
 
             }
-
-
         }
     }
 }

@@ -26,7 +26,8 @@ public class ToDoListManager {
         System.out.println("3. Edit Task");
         System.out.println("4. Delete Task");
         System.out.println("5. Filter Tasks");
-        System.out.println("6. Statistics Tasks");
+        System.out.println("6. Task completed!");
+        System.out.println("7. Statistics Tasks");
     }
 
     public void printMenuList() {
@@ -89,6 +90,19 @@ public class ToDoListManager {
                 .filter(condition)
                 .collect(Collectors.toList());
 
-        tasks = filtered;
+        System.out.println(tasks = filtered);
+    }
+
+    // в мене та сама роблема програма працює коректно, проте виводиться - "id of task is not found."
+    public void taskIsCompleted(int id) {
+        for (Task task : tasks) {
+            if (task.getId() == id) {
+                task.setCompleted(true);
+            } else {
+                System.out.println("id of task is not found.");
+                break;
+            }
+        }
+
     }
 }

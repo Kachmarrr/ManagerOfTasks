@@ -102,6 +102,15 @@ public class Main {
                     Integer id = scanner.nextInt();
                     manager.taskIsCompleted(id);
                 }
+
+
+
+
+
+
+
+
+                
             }
         }
     }

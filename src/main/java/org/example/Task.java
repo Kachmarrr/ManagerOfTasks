@@ -17,10 +17,11 @@ public class Task {
     private String description;
     @NonNull
     private int priority; // "High", "Medium", "Low"
-    private boolean isCompleted;
+    @NonNull
+    private boolean status;
 
     @Override //Перевизначений метод toString() для зручного виводу задач. можна було через lombok
     public String toString() {
-        return "\nTask-> \nid: " + id + "\npriority: " + priority + "\ncategory: " + category  + "\ndescription:  " + description + "\nstatus:  " + isCompleted;
+        return "\nTask-> \nid: " + id + "\npriority: " + priority + "\ncategory: " + category + "\ndescription:  " + description + "\nstatus:  " + status;
     }
 }
